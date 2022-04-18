@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% block precommunity_content %}{% endblock %}
+        {% block community_content %}{% endblock %}
+        {% block postcommunity_content %}{% endblock %}
+
+    </div>
+</div>
+
+{% endblock %}
