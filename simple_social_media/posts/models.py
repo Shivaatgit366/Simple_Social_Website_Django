@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.conf import settings
-from django import misaka
+import misaka
 from communities.models import Community
 
 # this function helps us to get the current user model active in the project.
@@ -13,11 +13,11 @@ User = get_user_model()
 
 
 class Post(models.Model):
-    user = models.ForeignKey(User, related_name="posts")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="posts")
     created_at = models.DateTimeField(auto_now=True)
     message = models.TextField()
     message_html = models.TextField(editable=False)
-    community = models.ForeignKey(Community, related_name="posts", null=True, blank=True)
+    community = models.ForeignKey(Community, on_delete=models.CASCADE, related_name="posts", null=True, blank=True)
 
     def __str__(self) -> str:
         return self.message
@@ -27,10 +27,10 @@ class Post(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
+        # return reverse("posts:all")  -->  this line returns the list of all the posts.
         return reverse("posts:single", kwargs={"username":self.user.username,
                                                 "pk":self.pk})
 
     class Meta:
         ordering = ["-created_at"]
         unique_together = ["user", "message"]
-

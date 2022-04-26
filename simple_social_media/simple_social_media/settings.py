@@ -42,12 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "bootstrap3", # if we install any new application using "pip install", that application should be mentioned here.
+    "bootstrap3",  # this app should be included in the settings.py "installed apps list".
     "accounts",
     "posts",
     "communities",
-    "misaka",
-    "braces"
 ]
 
 

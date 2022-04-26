@@ -23,7 +23,9 @@ urlpatterns = [
     path("", views.HomePage.as_view(), name="home"),
     path("accounts/", include("accounts.urls", namespace="accounts")),
     path("accounts/", include("django.contrib.auth.urls")),  # this built-in configuration contains so many views like login, logout, password change, password reset etc.
-    
+    path("posts/", include("posts.urls", namespace="posts")),
+    path("communities/", include("communities.urls", namespace="communities")),
+
     # these urls will be separately written inside the project urls.py because these urls will be accessed directly.
     path("test/", views.TestPage.as_view(), name="test"), 
     path("thanks/", views.ThanksPage.as_view(), name="thanks")

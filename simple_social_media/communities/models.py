@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from django import misaka
+import misaka
 from django.urls import reverse
 
 # this function helps us to get the current user model active in the project.

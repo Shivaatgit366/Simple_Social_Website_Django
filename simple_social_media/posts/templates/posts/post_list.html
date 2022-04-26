@@ -1,0 +1,16 @@
+{% extends "posts/post_base.html" %}
+
+{% block prepost_content %}
+    <div class="col-md-4 container">
+        <h2 class="title">List of all the Posts</h2>
+    </div>
+{% endblock %}
+
+
+{% block post_content %}
+    <div class="col-md-8">
+        {% for post in list_of_post_objects %}
+            {% include "posts/_post.html" %}
+        {% endfor %}
+    </div>
+{% endblock %}
